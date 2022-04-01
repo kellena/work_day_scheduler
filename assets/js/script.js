@@ -19,6 +19,7 @@ $(document).ready(function () {
        
         // save to local storage
         localStorage.setItem(hour, description)
+        console.log(localStorage)
     })
 
 // create tracker for current time, give past/present/future
