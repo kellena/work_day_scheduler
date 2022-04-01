@@ -5,23 +5,28 @@ $("#currentDay").html(currentDay);
 
 // create basic HTML to resemble mockup
 // - create 9 rows with 3 columns each **
-// - hour column (size 1)
-// - description column (size 10)
-// - save button column will be (size 1)
+// - hour column (size 1), description column (size 10), save button column (size 1)
 
 // make sure jQuery detects doc is ready for editing
+// (looked this up, new to me but most documents had this format)
 $(document).ready(function () {
    
     // set up an event listener for the save button on click
     $(".saveBtn").on("click", function() {
-        
+        // create variables for hour and description to be saved, use "id" for all hours
+        var hour = $(this).parent().attr("id");
+        var description = $(this).siblings(".description").val();
+       
+        // save to local storage
+        localStorage.setItem(hour, description)
     })
 
-})
+// create tracker for current time, give past/present/future
+    function hourTracker () {
 
-// - listen for clicks on each time block's save button **
-// - save it to local storage
-// - each row saves that specific row rather than the whole doc 
+    }
+
+})
 
 // load any saved data from local storage
 
@@ -31,13 +36,7 @@ function loadSavedData(){
 
 // figure out how to enter text in each the main row box
 // - possible text area, or check bootstrap for formatting
-
-
-
-// display day, month, and day of month
-// moment.js, figure out formatting
-// - how to track hours
-// - moment().startOf('hour').fromNow();
+// (done, changed div to textarea in html)
 
 // color coding of time blocks
 // - function to track hours
