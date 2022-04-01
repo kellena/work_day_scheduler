@@ -23,31 +23,45 @@ $(document).ready(function () {
 
 // create tracker for current time, give past/present/future
     function hourTracker () {
+        
+        // create a variable for this function to use the current time
+        var currentHour = moment().hour();
 
+        // loop an if/else statement over all time blocks (past/present/future)
+        $(".time-block").each(function() {
+            var timeBlockHour =  parseInt($(this).attr("id").split("hour")[1]);
+
+            // change the color with if/else according to css
+            if (timeBlockHour < currentHour) {
+                $(this).removeClass("present");
+                $(this).removeClass("future");
+                $(this).addClass("past");
+            }
+            else if (timeBlockHour === currentHour) {
+                $(this).removeClass("past");
+                $(this).removeClass("future");
+                $(this).addClass("present");
+            }
+            else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+            }
+        })
     }
 
+    // load any saved data from local storage using getItem
+
+    $("#hour9 .description").val(localStorage.getItem("hour9"));
+    $("#hour10 .description").val(localStorage.getItem("hour10"));
+    $("#hour11 .description").val(localStorage.getItem("hour11"));
+    $("#hour12 .description").val(localStorage.getItem("hour12"));
+    $("#hour1 .description").val(localStorage.getItem("hour1"));
+    $("#hour2 .description").val(localStorage.getItem("hour2"));
+    $("#hour3 .description").val(localStorage.getItem("hour3"));
+    $("#hour4 .description").val(localStorage.getItem("hour4"));
+    $("#hour5 .description").val(localStorage.getItem("hour5"));
+
+    // call tracker function
+    hourTracker();
 })
-
-// load any saved data from local storage
-
-function loadSavedData(){
-    localStorage.getItem()
-}
-
-// figure out how to enter text in each the main row box
-// - possible text area, or check bootstrap for formatting
-// (done, changed div to textarea in html)
-
-// color coding of time blocks
-// - function to track hours
-
-function timeColor(){
-    var currentHour = moment().format('h:mm:ss a');
-
-
-}
-
-// - - if currentHour > timeBlockHour, set boxes to gray (past)
-// - - else if currentHour = timeBlockHour, set boxes to red (present)
-// - - else set time blocks to green (future)
-// - - look for times at current hour and up to the next hour
