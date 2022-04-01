@@ -1,4 +1,7 @@
 // make sure everything is properly linked to HTML **
+// display current date
+var currentDay = moment().format('MMM Do YYYY')
+$("#currentDay").html(currentDay);
 
 // create basic HTML to resemble mockup
 // - create 9 rows with 3 columns each **
@@ -6,12 +9,15 @@
 // - description column (size 10)
 // - save button column will be (size 1)
 
-// set up an event handler for the save button
-$(".saveBtn").on("click", saveTimeBlock)
+// make sure jQuery detects doc is ready for editing
+$(document).ready(function () {
+   
+    // set up an event listener for the save button on click
+    $(".saveBtn").on("click", function() {
+        
+    })
 
-function saveTimeBlock(){
-    localStorage.setItem("hourSlot9", hour + description)
-    }
+})
 
 // - listen for clicks on each time block's save button **
 // - save it to local storage
